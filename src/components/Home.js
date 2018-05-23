@@ -14,7 +14,11 @@ class Home extends Component {
         return (
             <div className="Home">
                 <h1>You're finally home</h1>
-                <button onClick={this.logout}>Logout</button>
+                <div className="form">
+                    <form>
+                        <input type="submit" className="input submit" onClick={this.logout} value="Sign Out" />
+                    </form>
+                </div>
             </div>
 
         );
