@@ -8,6 +8,7 @@ class Login extends Component {
             password: ''
         }
         this.login = this.login.bind(this)
+        this.signup = this.signup.bind(this)
         this.handleChange = this.handleChange.bind(this)
     }
 
@@ -18,6 +19,13 @@ class Login extends Component {
     login(e){
         e.preventDefault();
         fire.auth().signInWithEmailAndPassword(this.state.email, this.state.password)
+            .catch((error) => {
+                console.log(error)
+            })
+    }
+    signup(e){
+        e.preventDefault();
+        fire.auth().createUserWithEmailAndPassword(this.state.email, this.state.password)
             .catch((error) => {
                 console.log(error)
             })
@@ -36,7 +44,10 @@ class Login extends Component {
                         <input type="password" name="password" id="InputPassword" onChange={this.handleChange} value={this.state.password} placeholder="Set a password for your account"/>
                     </div>
                     <div className="input">
-                        <input type="submit" className="submit" onClick={this.login} />
+                        <input type="submit" className="submit" onClick={this.login} value="Login"/>
+                    </div>
+                    <div className="input">
+                        <input type="submit" className="submit" onClick={this.signup} value="Sign up" />
                     </div>
                 </form>
             </div>
